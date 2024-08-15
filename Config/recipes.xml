@@ -1,0 +1,74 @@
+<C0d3knecht>
+	<remove xpath="/recipes/recipe[@name='workbench']"/>
+	<remove xpath="/recipes/recipe[@name='chemistryStation']"/>
+	<remove xpath="/recipes/recipe[@name='cementMixer']"/>
+	<remove xpath="/recipes/recipe[@name='forge']"/>
+<append xpath="/recipes">
+
+
+
+<recipe name="workbench" count="1" craft_time="180" tags="perkAdvancedEngineering,learnable">
+	<ingredient name="resourceForgedIron" count="25"/>
+	<ingredient name="resourceMechanicalParts" count="20"/>
+	<ingredient name="resourceDuctTape" count="5"/>
+	<ingredient name="resourceNail" count="100"/>
+	<ingredient name="resourceWood" count="100"/>
+	<effect_group>
+		<passive_effect name="CraftingIngredientCount" level="2,3,4,5" operation="base_add" value="-10,-16,-20,-28" tags="resourceNail,resourceWood"/>
+		<passive_effect name="CraftingIngredientCount" level="2,3,4,5" operation="base_add" value="-1,-2,-3,-5" tags="resourceForgedIron,resourceMechanicalParts"/>
+		<passive_effect name="CraftingIngredientCount" level="3,4,5" operation="base_add" value="-1,-2,-3" tags="resourceDuctTape"/>		
+	</effect_group>
+</recipe>
+
+<recipe name="chemistryStation" count="1" craft_time="1200" craft_area="workbench" tags="learnable,perkAdvancedEngineering,workbenchCrafting">   <!-- craft_area="workbench" -->
+	<ingredient name="toolBeaker" count="6"/>
+	<ingredient name="resourceForgedIron" count="600"/>
+	<ingredient name="toolCookingPot" count="18"/>
+	<ingredient name="resourceMetalPipe" count="180"/>
+	<ingredient name="resourceAcid" count="30"/>
+	
+	<effect_group>
+		<passive_effect name="CraftingIngredientCount" level="1,2,3,4,5" operation="base_add" value="-1,-2,-3,-4,-5" tags="toolBeaker"/>
+		<passive_effect name="CraftingIngredientCount" level="1,2,3,4,5" operation="base_add" value="-100,-200,-300,-400.-500" tags="resourceForgedIron"/>
+		<passive_effect name="CraftingIngredientCount" level="1,2,3,4,5" operation="base_add" value="-3,-6,-9,-12,-15" tags="toolCookingPot"/>
+		<passive_effect name="CraftingIngredientCount" level="1,2,3,4,5" operation="base_add" value="-30,-60,-90,-120,-150" tags="resourceMetalPipe"/>
+		<passive_effect name="CraftingIngredientCount" level="1,2,3,4,5" operation="base_add" value="-5,-10,-15,-20,-25" tags="resourceAcid"/>
+	</effect_group>
+</recipe>
+
+
+
+<recipe name="cementMixer" count="1" craft_area="workbench" tags="learnable,perkAdvancedEngineering,workbenchCrafting">
+	<ingredient name="resourceForgedIron" count="100"/>  <!-- 25 -->
+	<ingredient name="resourceSpring" count="32"/>		<!-- 4 -->
+	<ingredient name="smallEngine" count="4"/>			<!-- 1 -->
+	<ingredient name="resourceMechanicalParts" count="80"/>   	<!-- 10 -->
+	<effect_group>
+		<passive_effect name="CraftingIngredientCount" level="2,3,4" operation="base_add" value="-25,-50,-75" tags="resourceForgedIron"/>
+		<passive_effect name="CraftingIngredientCount" level="2,3,4" operation="base_add" value="-16,-24,-28," tags="resourceSpring"/>
+		<passive_effect name="CraftingIngredientCount" level="2,3,4" operation="base_add" value="-1,-2,-3" tags="smallEngine"/>
+		<passive_effect name="CraftingIngredientCount" level="2,3,4" operation="base_add" value="-20,-40,-70" tags="resourceMechanicalParts"/>
+	</effect_group>
+</recipe>
+
+
+<recipe name="forge" count="1" craft_area="workbench" tags="learnable,perkAdvancedEngineering,workbenchCrafting">
+	<ingredient name="resourceCobblestones" count="150"/> <!-- 50 -->
+	<ingredient name="woodLogPillar100" count="3"/>  <!-- 1 -->
+	<ingredient name="resourceLeather" count="30"/>  <!-- 10 -->
+	<ingredient name="resourceDuctTape" count="9"/>   <!-- 3 -->
+	<ingredient name="resourceMetalPipe" count="9"/> <!-- 3 -->
+
+	<effect_group>
+		<passive_effect name="CraftingIngredientCount" level="2,3" operation="base_add" value="-50,-100" tags="resourceCobblestones"/>
+		<passive_effect name="CraftingIngredientCount" level="2,3" operation="base_add" value="-1,-2" tags="woodLogPillar100"/>
+		<passive_effect name="CraftingIngredientCount" level="2,3" operation="base_add" value="-10,-20" tags="resourceLeather"/>
+		<passive_effect name="CraftingIngredientCount" level="2,3" operation="base_add" value="-3,-6" tags="resourceDuctTape"/>
+		<passive_effect name="CraftingIngredientCount" level="2,3" operation="base_add" value="-3,-6" tags="resourceMetalPipe"/>
+	</effect_group>
+
+</recipe>
+
+
+</append>
+</C0d3knecht>

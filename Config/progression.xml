@@ -1,0 +1,100 @@
+<C0d3knecht>
+<remove xpath="/progression/perks/perk[@name='perkAdvancedEngineering']"/>
+
+<append xpath="/progression/perks">
+
+	<perk name="perkAdvancedEngineering" parent="skillIntellectCraftsmanship" name_key="perkAdvancedEngineeringName" desc_key="perkAdvancedEngineeringDesc" icon="ui_game_symbol_workbench">
+		<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="1" desc_key="reqIntellectLevel01"/></level_requirements>
+		<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="4" desc_key="reqIntellectLevel04"/></level_requirements>
+		<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="6" desc_key="reqIntellectLevel06"/></level_requirements>
+		<level_requirements level="4"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="8" desc_key="reqIntellectLevel08"/></level_requirements>
+		<level_requirements level="5"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="10" desc_key="reqIntellectLevel10"/></level_requirements>
+
+		<effect_group>
+			<!-- fake crafting perk that is used to scale resources -->
+			<passive_effect name="CraftingTier" operation="base_set" level="0,5" value="0,5" tags="perkAdvancedEngineering"/>
+
+
+			<passive_effect name="CraftingTime" operation="perc_add" level="1,5" value="-0.2" tags="perkAdvancedEngineering"/>
+			<passive_effect name="CraftingTime" operation="perc_add" level="2,3,4,5" value="-0.2,-0.3,-0.4,-0.5" tags="workbenchCrafting,cementMixerCrafting"/>
+	
+			<passive_effect name="ElectricalTrapXP" operation="base_set" level="1,2,3,4,5" value=".15,.3,.45,.6,.75"/>
+
+			<!-- Increase the chance to find electrical items with each perk rank -->
+			<passive_effect name="LootProb" operation="perc_add" level="1,5" value="2,10" tags="electricianSkill"/>
+			<!-- Increase the chance to find trap items with each perk rank -->
+			<passive_effect name="LootProb" operation="perc_add" level="1,5" value="2,10" tags="trapsSkill"/>
+			<!-- Increase the chance to find workstations with each perk rank -->
+			<passive_effect name="LootProb" operation="perc_add" level="1,5" value="2,10" tags="workstationSkill"/>
+			<!-- Increase the chance to find repair tools with each perk rank -->
+			<passive_effect name="LootProb" operation="perc_add" level="1,5" value="2,10" tags="repairingSkill"/>
+
+			<!-- Increase the chance to find electrical crafting skill magazines with each perk rank up to crafting skill 100 -->
+			<passive_effect name="LootProb" operation="perc_add" level="1,5" value="2,10" tags="electricianCSM">
+				<requirement name="ProgressionLevel" progression_name="craftingElectrician" operation="LT" value="100"/>
+			</passive_effect>
+			<!-- Increase the chance to find trap crafting skill magazines with each perk rank up to crafting skill 75 -->
+			<passive_effect name="LootProb" operation="perc_add" level="1,5" value="2,10" tags="trapsCSM">
+				<requirement name="ProgressionLevel" progression_name="craftingTraps" operation="LT" value="75"/>
+			</passive_effect>
+			<!-- Increase the chance to find workstation crafting skill magazines with each perk rank up to crafting skill 75 -->
+			<passive_effect name="LootProb" operation="perc_add" level="1,5" value="2,10" tags="workstationCSM">
+				<requirement name="ProgressionLevel" progression_name="craftingWorkstations" operation="LT" value="75"/>
+			</passive_effect>
+			<!-- Increase the chance to find repair tool crafting skill magazines with each perk rank up to crafting skill 50 -->
+			<passive_effect name="LootProb" operation="perc_add" level="1,5" value="2,10" tags="repairToolsCSM">
+				<requirement name="ProgressionLevel" progression_name="craftingRepairTools" operation="LT" value="50"/>
+			</passive_effect>
+
+			<!-- Once electrical crafting skill reaches 100, set the probability bonus of finding electrical crafting skill magazines to 0 -->
+			<passive_effect name="LootProb" operation="base_set" level="1,5" value="1,1" tags="electricianCSM">
+				<requirement name="ProgressionLevel" progression_name="craftingElectrician" operation="Equals" value="100"/>
+			</passive_effect>
+			<!-- Once trap crafting skill reaches 75, set the probability bonus of finding trap crafting skill magazines to 0 -->
+			<passive_effect name="LootProb" operation="base_set" level="1,5" value="1,1" tags="trapsCSM">
+				<requirement name="ProgressionLevel" progression_name="craftingTraps" operation="Equals" value="75"/>
+			</passive_effect>
+			<!-- Once workstation crafting skill reaches 75, set the probability bonus of finding workstation crafting skill magazines to 0 -->
+			<passive_effect name="LootProb" operation="base_set" level="1,5" value="1,1" tags="workstationCSM">
+				<requirement name="ProgressionLevel" progression_name="craftingWorkstations" operation="Equals" value="75"/>
+			</passive_effect>
+			<!-- Once repair tool skill reaches 50, set the probability bonus of finding repair tool crafting skill magazines to 0 -->
+			<passive_effect name="LootProb" operation="base_set" level="1,5" value="1,1" tags="repairToolsCSM">
+				<requirement name="ProgressionLevel" progression_name="craftingRepairTools" operation="Equals" value="50"/>
+			</passive_effect>
+
+			<effect_description level="1" desc_key="perkAdvancedEngineeringRank1Desc" long_desc_key="perkAdvancedEngineeringRank1LongDesc"/>
+			<effect_description level="2" desc_key="perkAdvancedEngineeringRank2Desc" long_desc_key="perkAdvancedEngineeringRank2LongDesc"/>
+			<effect_description level="3" desc_key="perkAdvancedEngineeringRank3Desc" long_desc_key="perkAdvancedEngineeringRank3LongDesc"/>
+			<effect_description level="4" desc_key="perkAdvancedEngineeringRank4Desc" long_desc_key="perkAdvancedEngineeringRank4LongDesc"/>
+			<effect_description level="5" desc_key="perkAdvancedEngineeringRank5Desc" long_desc_key="perkAdvancedEngineeringRank5LongDesc"/>
+
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,100" value="1" tags="workbench"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,100" value="1" tags="chemistryStation"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,100" value="1" tags="cementMixer"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,100" value="1" tags="forge"/>
+
+
+		
+			<display_entry icon="workbench" name_key="workstationsT2-1" has_quality="false" unlock_level="1" >
+				<unlock_entry item="workbench" unlock_tier="1" />
+			</display_entry>
+			<display_entry icon="chemistryStation" name_key="workstationsT4" has_quality="false" unlock_level="1" >
+				<unlock_entry item="chemistryStation" unlock_tier="1" />
+			</display_entry>
+			<display_entry icon="cementMixer" name_key="workstationsT3-1" has_quality="false" unlock_level="1" >
+				<unlock_entry item="cementMixer" unlock_tier="1" />
+			</display_entry>
+			<display_entry icon="forge" name_key="workstationsT1-2" has_quality="false" unlock_level="1" >
+				<unlock_entry item="forge" unlock_tier="2" />
+			</display_entry>
+
+		</effect_group>
+	</perk>
+
+</append>
+</C0d3knecht>
+
+
+
+
